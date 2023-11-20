@@ -9,6 +9,8 @@ void send_data(const std::string& val);
 int main()
 {
     initUART();
+    // initSPI();
+    // ethernetCommunication();
     
     // send_data("Intelligent Greenhouse...");
 
