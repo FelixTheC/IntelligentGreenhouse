@@ -18,7 +18,7 @@ Command::Command(std::string _name, const std::function<std::string(void)> &_com
 Commands::Commands()
 {
     commands.emplace_back(
-            std::make_shared<Command>(
+            std::make_unique<Command>(
                     Command(
                             "version",
                             [=]()
@@ -27,7 +27,7 @@ Commands::Commands()
                             }
                     )));
     commands.emplace_back(
-            std::make_shared<Command>(
+            std::make_unique<Command>(
                     Command(
                             "tempsensor_on",
                             [=]()
@@ -36,7 +36,7 @@ Commands::Commands()
                             }
                     )));
     commands.emplace_back(
-            std::make_shared<Command>(
+            std::make_unique<Command>(
                     Command(
                             "tempsensor_off",
                             [=]()
@@ -45,7 +45,7 @@ Commands::Commands()
                             }
                     )));
     commands.emplace_back(
-            std::make_shared<Command>(
+            std::make_unique<Command>(
                     Command(
                             "tempsensor_data",
                             [=]()
@@ -54,7 +54,7 @@ Commands::Commands()
                             }
                     )));
     commands.emplace_back(
-            std::make_shared<Command>(
+            std::make_unique<Command>(
                     Command(
                             "soil_on",
                             [=]()
@@ -63,7 +63,7 @@ Commands::Commands()
                             }
                     )));
     commands.emplace_back(
-            std::make_shared<Command>(
+            std::make_unique<Command>(
                     Command(
                             "soil_off",
                             [=]()
@@ -72,7 +72,7 @@ Commands::Commands()
                             }
                     )));
     commands.emplace_back(
-            std::make_shared<Command>(
+            std::make_unique<Command>(
                     Command(
                             "soil_data",
                             [=]()
@@ -81,7 +81,7 @@ Commands::Commands()
                             }
                     )));
     commands.emplace_back(
-            std::make_shared<Command>(
+            std::make_unique<Command>(
                     Command(
                             "humiditysensor_on",
                             [=]()
@@ -90,7 +90,7 @@ Commands::Commands()
                             }
                     )));
     commands.emplace_back(
-            std::make_shared<Command>(
+            std::make_unique<Command>(
                     Command(
                             "humiditysensor_off",
                             [=]()
@@ -99,7 +99,7 @@ Commands::Commands()
                             }
                     )));
     commands.emplace_back(
-            std::make_shared<Command>(
+            std::make_unique<Command>(
                     Command(
                             "humiditysensor_data",
                             [=]()
@@ -108,7 +108,7 @@ Commands::Commands()
                             }
                     )));
     commands.emplace_back(
-            std::make_shared<Command>(
+            std::make_unique<Command>(
                     Command(
                             "waterpump_ic2_on", // rlmotor => external roof-light motor
                             [=]()
@@ -118,7 +118,7 @@ Commands::Commands()
                     )));
     
     commands.emplace_back(
-            std::make_shared<Command>(
+            std::make_unique<Command>(
                     Command(
                             "waterpump_ic2_off", // rlmotor => external roof-light motor
                             [=]()
@@ -128,7 +128,7 @@ Commands::Commands()
                     )));
     
     commands.emplace_back(
-            std::make_shared<Command>(
+            std::make_unique<Command>(
                     Command(
                             "roof_light_ic2_on",
                             [=]()
@@ -138,7 +138,7 @@ Commands::Commands()
                     )));
     
     commands.emplace_back(
-            std::make_shared<Command>(
+            std::make_unique<Command>(
                     Command(
                             "roof_light_ic2_off",
                             [=]()
@@ -148,7 +148,7 @@ Commands::Commands()
                     )));
     
     commands.emplace_back(
-            std::make_shared<Command>(
+            std::make_unique<Command>(
                     Command(
                             "send_test_request",
                             [=]()
@@ -165,7 +165,7 @@ Commands::Commands()
     
     std::for_each(commands.begin(),
                   commands.end(),
-                  [&result, &cmd](const std::shared_ptr<Command> &command){
+                  [&result, &cmd](const std::unique_ptr<Command> &command){
         if (command->name == cmd)
         {
             result = command->command();

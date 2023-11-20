@@ -25,7 +25,7 @@ struct Command
 struct Commands
 {
     Commands();
-    std::vector<std::shared_ptr<Command>> commands {};
+    std::vector<std::unique_ptr<Command>> commands {};
     
     [[ nodiscard ]] std::string execute_command(std::string cmd) noexcept;
 };
